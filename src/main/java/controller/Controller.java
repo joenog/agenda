@@ -12,7 +12,8 @@ import model.DAO;
 
 /* Servlet implementation class Controller */
 
-@WebServlet(urlPatterns = { "/Controller", "/main" })
+// requisicoes recebidas
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO dao = new DAO();
@@ -23,6 +24,7 @@ public class Controller extends HttpServlet {
 
 	}
 
+	// method get
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -32,6 +34,10 @@ public class Controller extends HttpServlet {
 
 		if (action.equals("/main")) {
 			contatos(request, response);
+		} else if (action.equals("/insert")) {
+			novoContato(request, response);
+		} else {
+			response.sendRedirect("index.html");
 		}
 		// teste de conexao
 		// dao.testeConexao();
@@ -42,4 +48,16 @@ public class Controller extends HttpServlet {
 			throws ServletException, IOException {
 		response.sendRedirect("agenda.jsp");
 	}
+	
+	// novo contato
+		protected void novoContato(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			//teste para recebimeto do contato
+			System.out.println(request.getParameter("nome"));
+			System.out.println(request.getParameter("fone"));
+			System.out.println(request.getParameter("email"));
+;		}
 }
+
+
+
