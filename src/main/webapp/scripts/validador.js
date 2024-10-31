@@ -1,5 +1,5 @@
 /**
- * Validação de formulário
+ * Validação de formulário.
  * Autor: Joab Nog.
  */
 
