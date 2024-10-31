@@ -4,7 +4,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Clientes</title>
+<title>Agenda de Clientes</title>
 <link rel="icon" href="imagens/favicon.png">
 <link  rel="stylesheet" href="style.css">
 </head>
