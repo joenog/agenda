@@ -12,7 +12,7 @@ public class JavaBeans {
 	public JavaBeans() {
 		super();
 	}
-	//construturo com parametros
+	//construtuo com parametros
 	public JavaBeans(String idcon, String nome, String fone, String email) {
 		super();
 		this.idcon = idcon;

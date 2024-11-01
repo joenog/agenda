@@ -9,6 +9,7 @@
   	font-style: normal;
   	font-variation-settings: "wdth" 100;
   	font-size: 1em;
+  	transition: .5s;
 }
 
 body {
@@ -19,13 +20,14 @@ body {
 }
 
 .imgCapa {
-	width: 99vw;
+	width: 100vw;
 }
 
 h1 {
-	font-size: 1.5em;
+	font-size: 1.6em;
 	color: #0a2d64;
 	text-align: center;
+	margin:20px;
 }
 
 .btn {
@@ -33,10 +35,12 @@ h1 {
 	background-color: #0a2d64;
 	border-radius: .5em;
 	padding: .5em;
-	margin: 15px 10px;
+	margin: 18px 10px;
 	color: #fff;	
 	box-shadow: none;
 	cursor: pointer;
+} .btn:hover {
+	background-color: #1a5fb4;
 }
 
 input {
