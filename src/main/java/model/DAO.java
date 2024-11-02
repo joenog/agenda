@@ -87,9 +87,28 @@ public class DAO {
 		}
 	}
 
+	// CRUD UPDATE
+	// selecion contato
+	public void selecionarContato(JavaBeans contato) {
+		String read2 = "select * from contatos where idcon = ?";
+		try {
+			Connection con = conectar();
+			PreparedStatement pst = con.prepareStatement(read2);
+			pst.setString(1, contato.getIdcon());
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				contato.setIdcon(rs.getString(1));
+				contato.setNome(rs.getString(2));
+				contato.setFone(rs.getString(3));
+				contato.setEmail(rs.getString(4));
+			}
+		} catch (Exception e) {
+			System.out.print(e);
+		}
+	}
+	
 	// teste conexao
-	/*
-	 * public void testeConexao() { try { Connection con = conectar();
+	 /* public void testeConexao() { try { Connection con = conectar();
 	 * System.out.println(con); con.close(); } catch (Exception e) { // TODO: handle
 	 * exception System.out.println(e); } }
 	 */
