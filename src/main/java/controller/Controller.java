@@ -17,7 +17,7 @@ import model.JavaBeans;
 /* Servlet implementation class Controller */
 
 // requisicoes recebidas
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select" })
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO dao = new DAO();
@@ -32,7 +32,6 @@ public class Controller extends HttpServlet {
 	// method get
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		String action = request.getServletPath();
 		System.out.println(action);
@@ -43,6 +42,8 @@ public class Controller extends HttpServlet {
 			novoContato(request, response);
 		} else if (action.equals("/select")) {
 			listarContato(request, response);
+		} else if (action.equals("/update")) {
+			editarContato(request, response);
 		} else {
 			response.sendRedirect("index.html");
 		}
@@ -86,18 +87,40 @@ public class Controller extends HttpServlet {
 		response.sendRedirect("main");
 		;
 	}
-	
-	//Editar contato
-	protected void listarContato(HttpServletRequest request, HttpServletResponse response) {
-		//Recebimento do id do contato que será editado
+
+	// Editar contato > primeiro listar depois editar
+	protected void listarContato(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// Recebimento do id do contato que será editado
 		String idcon = request.getParameter("idcon");
-		//setar variavel javabeans
+		// setar variavel javabeans
 		contato.setIdcon(idcon);
-		
-		//executar metodo Selecionar contato(DAO)
-		dao.selecionarContato(contato);	
+
+		// executar metodo Selecionar contato(DAO)
+		dao.selecionarContato(contato);
+
+		// SETAR OS ATRIBUTOS do formulario com o conteudo javabeans
+		request.setAttribute("idcon", contato.getIdcon());
+		request.setAttribute("nome", contato.getNome());
+		request.setAttribute("fone", contato.getFone());
+		request.setAttribute("email", contato.getEmail());
+		// encaminha ao documento editar.jsp
+		RequestDispatcher rd = request.getRequestDispatcher("editar.jsp");
+		rd.forward(request, response);
+	}
+
+	// Editar contato
+	protected void editarContato(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// SETAR VARIAVEIS JAVABEANS
+		contato.setIdcon(request.getParameter("idcon"));
+		contato.setNome(request.getParameter("nome"));
+		contato.setFone(request.getParameter("fone"));
+		contato.setEmail(request.getParameter("email"));
+		dao.alterarContato(contato);
+
+		// redirecionar ao documento agenda.jsp > atualizando as alterações
+		response.sendRedirect("main");
 	}
 }
-
-
-

@@ -89,3 +89,7 @@ input[name="fone"] {
 	padding: 10px;
 	border: 1px solid grey;
 }
+
+#editarImput {
+	background-color: grey;
+}
