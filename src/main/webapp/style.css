@@ -23,7 +23,9 @@ body {
 }
 
 .imgCapa {
-	width: 100vw;
+	max-width: 100vw;
+	max-height: 100vw;
+	border-radius: 20px;
 }
 
 h1 {
@@ -46,6 +48,13 @@ h1 {
 
 .btn:hover {
 	background-color: #1a5fb4;
+}
+
+#btnDel {
+	background-color: #9e2424;
+
+} #btnDel:hover {
+	background-color: #be1313;
 }
 
 input {
@@ -91,5 +100,6 @@ input[name="fone"] {
 }
 
 #editarImput {
-	background-color: grey;
+	background-color: rgb(222, 221, 218);
+	width: 100px;
 }

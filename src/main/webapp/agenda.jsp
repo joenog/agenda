@@ -31,20 +31,28 @@ ArrayList<JavaBeans> lista = (ArrayList<JavaBeans>) request.getAttribute("contat
 			</thead>
 
 			<tbody>
-				<%for(int i = 0; i < lista.size(); i++) {%> 
-					<tr>
-						<td> <%=lista.get(i).getIdcon()%></td>
-						<td> <%=lista.get(i).getNome()%></td>
-						<td> <%=lista.get(i).getFone()%> </td>
-						<td> <%=lista.get(i).getEmail()%></td>
-						<td> <a href="select?idcon=<%=lista.get(i).getIdcon()%>" class="btn">Editar</a></td>
-					</tr>
-				
-				<%} %>
+				<%
+				for (int i = 0; i < lista.size(); i++) {
+				%>
+				<tr>
+					<td><%=lista.get(i).getIdcon()%></td>
+					<td><%=lista.get(i).getNome()%></td>
+					<td><%=lista.get(i).getFone()%></td>
+					<td><%=lista.get(i).getEmail()%></td>
+					<td><a href="select?idcon=<%=lista.get(i).getIdcon()%>"
+						class="btn">Editar</a> <a
+						href="javascript: confirmar(<%=lista.get(i).getIdcon()%>)"
+						id="btnDel" class="btn">Excluir</a></td>
+				</tr>
+
+				<%
+				}
+				%>
 
 			</tbody>
 
 		</table>
+		<script src="scripts/confirmador.js"></script>
 	</main>
 </body>
 </html>
